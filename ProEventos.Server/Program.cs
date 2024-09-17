@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using ProEventos.Server.Data;
+using ProEventos.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,7 +12,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddEntityFrameworkSqlServer()
-  .AddDbContext<DataContext>(
+  .AddDbContext<ProEventosContext>(
       options => options.UseSqlServer(builder.Configuration.GetConnectionString("DataBase"))
     );
 
