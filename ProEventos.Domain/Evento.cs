@@ -9,7 +9,6 @@ namespace ProEventos.Domain
         public int Id { get; set; }
         [MaxLength(150)]
         public string? Local { get; set; } = string.Empty;
-        [MaxLength(11)]
         public DateTime? DataEvento { get; set; }
         [MaxLength(150)]
         public string? Tema { get; set; } = string.Empty;
@@ -20,7 +19,8 @@ namespace ProEventos.Domain
         public string Telefone { get; set; } = string.Empty;
         [MaxLength(150)]
         public string Email { get; set; } = string.Empty;
-        public IEnumerable<Lote>? Lote { get; set; }
+
+        public IEnumerable<Lote>? Lotes { get; set; }
         public IEnumerable<RedeSocial>? RedesSociais { get; set; }
         public IEnumerable<PalestranteEvento>? PalestrantesEventos { get; set; }
 

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ProEventos.Persistence.Migrations
 {
     /// <inheritdoc />
-    public partial class Initial : Migration
+    public partial class NomeDaMigracao : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -18,7 +18,7 @@ namespace ProEventos.Persistence.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Local = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: true),
-                    DataEvento = table.Column<DateTime>(type: "datetime2", maxLength: 11, nullable: true),
+                    DataEvento = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Tema = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: true),
                     QtdPessoas = table.Column<int>(type: "int", nullable: false),
                     ImagemURL = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
@@ -113,12 +113,14 @@ namespace ProEventos.Persistence.Migrations
                         name: "FK_tbredesSociais_tbeventos_EventoId",
                         column: x => x.EventoId,
                         principalTable: "tbeventos",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_tbredesSociais_tbpalestrantes_PalestranteId",
                         column: x => x.PalestranteId,
                         principalTable: "tbpalestrantes",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
