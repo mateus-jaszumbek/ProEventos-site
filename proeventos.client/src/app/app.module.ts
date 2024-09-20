@@ -4,17 +4,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
 import { EventosComponent } from './eventos/eventos.component';
-
 import { NavComponent } from './nav/nav.component';
-
 import { PalestrantesComponent } from './palestrantes/palestrantes.component';
-
 import { CollapseModule } from '../../ngx-bootstrap/src/collapse/collapse.module';
+import { AppRoutingModule } from './app-routing.module';
+
 
 @NgModule({
   declarations: [
@@ -24,11 +20,12 @@ import { CollapseModule } from '../../ngx-bootstrap/src/collapse/collapse.module
     PalestrantesComponent
   ],
   imports: [
-    BrowserModule, HttpClientModule,
-    AppRoutingModule,
+    BrowserModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     CollapseModule.forRoot(),
-    FormsModule
+    FormsModule,
+    AppRoutingModule
   ],
   providers: [
     provideAnimationsAsync()
