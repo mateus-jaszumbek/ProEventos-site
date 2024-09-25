@@ -1,6 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
+
+import { ToastrService } from 'ngx-toastr';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { NgxSpinnerService } from 'ngx-spinner';
+
 import { EventoService } from '../Services/evento.Service';
 import { Evento } from '../Models/Evento';
+
 
 @Component({
   selector: 'app-eventos',
@@ -8,6 +14,7 @@ import { Evento } from '../Models/Evento';
   styleUrls: ['./eventos.component.scss']
 })
 export class EventosComponent implements OnInit {
+  modalRef!: BsModalRef;
 
   public eventos: Evento[] = [];
   public eventosFiltrados: Evento[] = [];
@@ -33,10 +40,21 @@ export class EventosComponent implements OnInit {
         evento.tema.toLowerCase().indexOf(filtrarPor) !== -1 || evento.local.toLowerCase().indexOf(filtrarPor) !== -1 || evento.dataEvento.indexOf(filtrarPor) !== -1
     );
   }
-  constructor(private eventoService: EventoService) { }
+  constructor(
+    private eventoService: EventoService,
+    private modalService: BsModalService,
+    private toastr: ToastrService,
+    private spinner: NgxSpinnerService
+  ) { }
 
   public ngOnInit(): void {
     this.getEventos();
+
+    this.spinner.show();
+
+    setTimeout(() => {
+
+    }, 5000);
   }
 
   public alterarImagem(): void {
@@ -49,7 +67,26 @@ export class EventosComponent implements OnInit {
         this.eventos = eventos;
         this.eventosFiltrados = this.eventos;
       },
-      error: (error: any) => console.log(error)
+      error: (error: any) => {
+        this.spinner.hide();
+        this.toastr.error('Erro ao carregar os eventos', 'Erro!');
+        console.error(error);
+      },
+      complete: () => this.spinner.hide()
     });
   }
+
+  public openModal(template: TemplateRef<any>): void {
+    this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
+  }
+
+  public confirm(): void {
+    this.modalRef.hide();
+    this.toastr.success('O evento foi deletado com sucesso!', 'Deletado!');
+  }
+
+  public decline(): void {
+    this.modalRef.hide();
+  }
+
 }
