@@ -6,12 +6,6 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 
-import { AppRoutingModule } from './app-routing.module';
-import { EventosComponent } from './eventos/eventos.component';
-import { NavComponent } from './nav/nav.component';
-import { PalestrantesComponent } from './palestrantes/palestrantes.component';
-import { EventoService } from './Services/evento.Service';
-
 import { CollapseModule } from '../../ngx-bootstrap/src/collapse/collapse.module';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
@@ -26,10 +20,17 @@ import { TimepickerModule } from 'ngx-bootstrap/timepicker';
 import { ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from 'ngx-spinner';
 
-
-import { DateTimeFormatPipe } from './Helpers/date-time-format.pipe';
+import { DateTimeFormatPipe } from './helpers/date-time-format.pipe';
 import { AppComponent } from '../app/app.component';
-
+import { ContatosComponent } from './components/contatos/contatos.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { PerfilComponent } from './components/perfil/perfil.component';
+import { AppRoutingModule } from './app-routing.module';
+import { EventosComponent } from './components/eventos/eventos.component';
+import { NavComponent } from './shared/nav/nav.component';
+import { PalestrantesComponent } from './components/palestrantes/palestrantes.component';
+import { EventoService } from './services/evento.Service';
+import { TituloComponent } from './shared/titulo/titulo.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,11 @@ import { AppComponent } from '../app/app.component';
     EventosComponent,
     NavComponent,
     PalestrantesComponent,
-    DateTimeFormatPipe
+    DateTimeFormatPipe,
+    ContatosComponent,
+    DashboardComponent,
+    PerfilComponent,
+    TituloComponent
   ],
   imports: [
     BrowserModule,

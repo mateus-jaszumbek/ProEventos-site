@@ -1,4 +1,4 @@
-<hr />
+<app-titulo [titulo]="'Eventos'"></app-titulo>
 <div class="row">
     <div class="col-lg-3 d-flex align-items-center">
         <label class="mr-2">Filtro: </label>
@@ -51,7 +51,7 @@
                 <button type="button"
                         class="btn btn-primary btn-sm"
                         tooltip="Editar">
-                     <i class="fa fa-edit"></i>
+                    <i class="fa fa-edit"></i>
                 </button>
                 <br />
                 <br />
@@ -59,7 +59,7 @@
                         class="btn btn-danger btn-sm"
                         tooltip="Excluir"
                         (click)="openModal(template)">
-                        <i class="fa fa-trash"></i>
+                    <i class="fa fa-trash"></i>
                 </button>
             </td>
         </tr>
@@ -78,15 +78,15 @@
 
 <ng-template #template>
     <div class="modal-body text-center">
-        <p>Você quer deletar esse Evento ?</p>        
+        <p>Você quer deletar esse Evento ?</p>
         <div class="row mt-5 text-center">
             <div class="col-6">
-                 <button type="button" class="btn btn-primary" (click)="confirm()">Sim</button>
+                <button type="button" class="btn btn-primary" (click)="confirm()">Sim</button>
             </div>
             <div class="col-6">
                 <button type="button" class="btn btn-danger" (click)="decline()">Não</button>
             </div>
-         </div>  
-     </div>
+        </div>
+    </div>
 </ng-template>
 
